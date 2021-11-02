@@ -45,7 +45,7 @@
 ```
 ## Для администраторов
 
-### Изменение опросво 
+### Изменение опросов 
 ```
 /api/administration/surveys
 /api/administration/surveys/{id}
