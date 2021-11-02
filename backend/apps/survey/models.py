@@ -52,7 +52,8 @@ class Survey(models.Model):
     data_start = models.DateTimeField()
     data_end = models.DateTimeField()
     questions = models.ManyToManyField(
-        Question
+        Question,
+        blank=True
     )
 
     def __str__(self):

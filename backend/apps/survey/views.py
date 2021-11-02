@@ -106,7 +106,7 @@ class SubmitSurveys(APIView):
             answers = request.data['answer']
             survey_id = request.data['survey_id']
             if SubmitSurvey.objects.filter(user_id=user_id, survey_id=survey_id).count() > 0:
-                raise Exception('The current user has already passed the survey ')
+                raise
             user_survey = SubmitSurvey(
                 user_id=user_id,
                 survey_id=survey_id
@@ -115,7 +115,7 @@ class SubmitSurveys(APIView):
             for item in answers:
                 submit_answer = SubmitAnswer(
                     submit_survey=user_survey,
-                    text_into_textfield=item['text'],
+                    text_answer=item['text'],
                     question_id=item['question_id'],
                 )
                 submit_answer.save()
@@ -123,4 +123,4 @@ class SubmitSurveys(APIView):
                 submit_answer.save()
             return Response("successful")
         except Exception:
-            raise "Invalid data"
+            raise 
